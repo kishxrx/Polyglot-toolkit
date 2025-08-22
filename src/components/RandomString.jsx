@@ -1,23 +1,19 @@
-import { useState, useCallback } from "react";
+import { useState } from "react";
 
 export default function RandomString() {
   const [randomStr, setRandomStr] = useState("");
 
-  const generateRandom = useCallback(() => {
-    setRandomStr(Math.random().toString(36).substring(2, 10));
-  }, []);
+  const generateString = () => {
+    const result = Math.random().toString(36).substring(2, 10);
+    setRandomStr(result);
+  };
 
   return (
-    <div className="p-6 border rounded-lg bg-white shadow-md">
-      <h2 className="text-2xl font-bold mb-4">Random String Generator</h2>
-      <button
-        onClick={generateRandom}
-        className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition"
-      >
-        Generate
-      </button>
+    <div className="flex flex-col items-center justify-center mt-10 space-y-4">
+      <h1 className="text-3xl font-bold">Random String Generator</h1>
+      <button onClick={generateString}>Generate</button>
       {randomStr && (
-        <p className="mt-4 p-3 border rounded-lg bg-gray-100">{randomStr}</p>
+        <p className="mt-4 text-xl text-yellow-400">{randomStr}</p>
       )}
     </div>
   );
