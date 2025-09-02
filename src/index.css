@@ -1,28 +1,24 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-/* Premium Aurora Glossy Background */
+/* Premium Soft White Gloss Background */
 body {
-  background: radial-gradient(at top left, rgba(99, 102, 241, 0.15), transparent 60%),
-              radial-gradient(at bottom right, rgba(236, 72, 153, 0.15), transparent 60%),
-              #0a0a0a;
-  background-attachment: fixed;
-  color: white;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.95)
+  ) !important;
+  color: #333;
   font-family: 'Inter', sans-serif;
   margin: 0;
   min-height: 100vh;
-  overflow-x: hidden; /* prevents horizontal scroll */
+  overflow-x: hidden;
 }
 
+
+
 /* Optional: give your main container a glass effect */
-#root {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 2rem;
-  min-height: 100vh;
-}
+
 
 .glass-card {
   background: rgba(255, 255, 255, 0.05);
