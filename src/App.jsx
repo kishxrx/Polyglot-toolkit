@@ -48,9 +48,7 @@ function RandomGenerator() {
           className="
             w-full
             py-3
-            bg-gradient-to-r
-            from-purple-600
-            to-pink-500
+            bg-gradient-to-r from-gray-950 via-gray-800 to-red-600
             rounded-xl
             shadow-lg
             text-white
@@ -158,9 +156,7 @@ function Translate() {
             w-full
             mt-4
             py-3
-            bg-gradient-to-r
-            from-purple-600
-            to-pink-500
+            bg-gradient-to-r from-gray-950 via-gray-800 to-red-600
             rounded-xl
             shadow-lg
             text-white
