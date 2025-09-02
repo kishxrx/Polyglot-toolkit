@@ -202,23 +202,10 @@ function Translate() {
   );
 }
 
-// ================= APP COMPONENT =================
-export default function App() {
+// ================= APP WRAPPER =================
+function App() {
   return (
-    <div
-      className="
-        min-h-screen
-        w-full
-        relative
-        bg-gradient-to-b
-        from-gray-900
-        via-purple-900
-        to-black
-        overflow-hidden
-        flex flex-col
-        items-center
-      "
-    >
+    <div>
       {/* Floating particles background */}
       <ParticlesBackground />
 
@@ -353,3 +340,5 @@ function ParticlesBackground() {
 
   return null;
 }
+
+export default App;
