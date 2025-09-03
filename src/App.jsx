@@ -231,7 +231,7 @@ function App() {
               font-semibold
               text-white
               transition
-              ${isActive ? "bg-purple-600 shadow-md" : "hover:bg-white/10"}
+              ${isActive ? "bg-gradient-to-r from-[#8B643A] via-[#A85834] to-[#9B7B4B] shadow-md" : "hover:bg-white/10"}
             `
           }
         >
@@ -247,7 +247,7 @@ function App() {
               font-semibold
               text-white
               transition
-              ${isActive ? "bg-purple-600 shadow-md" : "hover:bg-white/10"}
+              ${isActive ? "bg-gradient-to-r from-[#8B643A] via-[#A85834] to-[#9B7B4B] shadow-md" : "hover:bg-white/10"}
             `
           }
         >
