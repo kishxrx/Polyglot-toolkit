@@ -94,14 +94,56 @@ function RandomGenerator() {
 function Translate() {
   const [input, setInput] = useState("");
   const [translated, setTranslated] = useState("");
+  const [source, setSource] = useState("auto"); // 👈 source language
+  const [target, setTarget] = useState("en");   // 👈 target language
 
-  const handleTranslate = () => {
-    if (!input.trim()) return;
-    setTranslated("🌐 Sample translated text (replace with API later)");
-  };
+  const handleTranslate = async () => {
+  if (!input.trim()) return;
+
+  try {
+    const res = await fetch("/translate", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ q: input, source, target }),
+    
+  }
+);
+
+
+    const data = await res.json();
+    setTranslated(data.translatedText || "❌ Could not translate");
+  } catch (err) {
+    console.error(err);
+    setTranslated("⚠️ Error: could not translate.");
+  }
+};
+
 
   return (
-    <div className="w-full flex flex-col items-center gap-12">
+    <div className="w-full flex flex-col items-center gap-6">
+
+      {/* 👇 Source language dropdown */}
+      <select value={source} onChange={(e) => setSource(e.target.value)}>
+        <option value="auto">Auto Detect</option>
+        <option value="en">English</option>
+        <option value="es">Spanish</option>
+        <option value="fr">French</option>
+        <option value="de">German</option>
+        <option value="ta">Tamil</option>
+        <option value="ja">Japanese</option>
+      </select>
+
+      {/* 👇 Target language dropdown */}
+      <select value={target} onChange={(e) => setTarget(e.target.value)}>
+        <option value="en">English</option>
+        <option value="es">Spanish</option>
+        <option value="fr">French</option>
+        <option value="de">German</option>
+        <option value="ta">Tamil</option>
+        <option value="ja">Japanese</option>
+      </select>
+
+
       {/* ================= Main Card ================= */}
       <div
         className="
