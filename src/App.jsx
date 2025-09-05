@@ -124,7 +124,7 @@ function Translate() {
 
       {/* 👇 Source language dropdown */}
       <select value={source} onChange={(e) => setSource(e.target.value)}>
-        <option value="auto">Auto Detect</option>
+        <option value="auto">From</option>
         <option value="en">English</option>
         <option value="es">Spanish</option>
         <option value="fr">French</option>
@@ -135,6 +135,7 @@ function Translate() {
 
       {/* 👇 Target language dropdown */}
       <select value={target} onChange={(e) => setTarget(e.target.value)}>
+        <option value="en">To</option>
         <option value="en">English</option>
         <option value="es">Spanish</option>
         <option value="fr">French</option>
@@ -249,19 +250,31 @@ function App() {
 
       {/* ================= Navigation Bar ================= */}
       <nav
-        className="
-          fixed
-          top-8
-          left-8
-          bg-black/30
-          backdrop-blur-3xl
-          p-4
-          rounded-2xl
-          shadow-xl
-          z-50
-          flex flex-col
-          gap-4
-        "
+  className="
+    fixed
+    bg-black/30
+    backdrop-blur-3xl
+    rounded-2xl
+    shadow-xl
+    z-50
+    flex
+    gap-4
+
+    /* Mobile (default) */
+    top-4
+    left-1/2
+    transform -translate-x-1/2
+    px-4 py-2
+    flex-row
+
+    /* Desktop (md and up) */
+    md:top-8
+    md:left-8
+    md:transform-none
+    md:p-4
+    md:flex-col
+    md:translate-x-0
+  "
       >
         <NavLink
           to="/"
