@@ -101,13 +101,14 @@ function Translate() {
   if (!input.trim()) return;
 
   try {
-    const res = await fetch("/translate", {
+    const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
+const res = await fetch(`${API_BASE}/translate`, {
   method: "POST",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify({ q: input, source, target }),
-    
-  }
-);
+});
+
 
 
     const data = await res.json();

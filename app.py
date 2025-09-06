@@ -1,24 +1,28 @@
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
+from googletrans import Translator
 import os
 
-app = Flask(__name__, static_folder="dist")
+# ================= APP SETUP =================
+app = Flask(__name__, static_folder="dist")  
 CORS(app)
+translator = Translator()
 
-# API endpoint
+# ================= TRANSLATION API =================
 @app.route("/translate", methods=["POST"])
 def translate():
     data = request.get_json()
-    q = data.get("q")
-    source = data.get("source")
-    target = data.get("target")
+    text = data.get("q")
+    src = data.get("source", "auto")
+    tgt = data.get("target", "en")
     
-    # Dummy translation (replace with real API call)
-    translated_text = f"[{source} → {target}] {q}"
-    
-    return jsonify({"translatedText": translated_text})
+    try:
+        translated = translator.translate(text, src=src, dest=tgt)
+        return jsonify({"translatedText": translated.text})
+    except Exception as e:
+        return jsonify({"translatedText": f"⚠️ Error: {str(e)}"})
 
-# Serve React frontend
+# ================= SERVE REACT FRONTEND =================
 @app.route("/", defaults={"path": ""})
 @app.route("/<path:path>")
 def serve(path):
@@ -27,5 +31,6 @@ def serve(path):
     else:
         return send_from_directory(app.static_folder, "index.html")
 
+# ================= RUN SERVER =================
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=5000, debug=True)
