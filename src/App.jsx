@@ -120,10 +120,19 @@ function Translate() {
 
 
   return (
-    <div className="w-full flex flex-col items-center gap-6">
+  <div className="w-full flex flex-col items-center gap-6">
+
+    {/* Container for both dropdowns */}
+    <div className="mt-4 flex flex-col sm:flex-row gap-4 justify-center w-full max-w-md">
 
       {/* 👇 Source language dropdown */}
-      <select value={source} onChange={(e) => setSource(e.target.value)}>
+      <select
+        value={source}
+        onChange={(e) => setSource(e.target.value)}
+        className="flex-1 p-2 rounded-lg bg-black/40 text-white border border-white/20 
+                   focus:outline-none focus:ring-2 focus:ring-indigo-500 
+                   [&>option]:bg-gray-900 [&>option]:text-white"
+      >
         <option value="auto">From</option>
         <option value="en">English</option>
         <option value="es">Spanish</option>
@@ -134,7 +143,13 @@ function Translate() {
       </select>
 
       {/* 👇 Target language dropdown */}
-      <select value={target} onChange={(e) => setTarget(e.target.value)}>
+      <select
+        value={target}
+        onChange={(e) => setTarget(e.target.value)}
+        className="flex-1 p-2 rounded-lg bg-black/40 text-white border border-white/20 
+                   focus:outline-none focus:ring-2 focus:ring-indigo-500 
+                   [&>option]:bg-gray-900 [&>option]:text-white"
+      >
         <option value="en">To</option>
         <option value="en">English</option>
         <option value="es">Spanish</option>
@@ -143,6 +158,9 @@ function Translate() {
         <option value="ta">Tamil</option>
         <option value="ja">Japanese</option>
       </select>
+
+    </div>
+
 
 
       {/* ================= Main Card ================= */}
@@ -266,7 +284,6 @@ function App() {
     transform -translate-x-1/2
     px-4 py-2
     flex-row
-    transform
 
     /* Desktop (md and up) */
     md:top-8
