@@ -266,6 +266,7 @@ function App() {
     transform -translate-x-1/2
     px-4 py-2
     flex-row
+    transform
 
     /* Desktop (md and up) */
     md:top-8
