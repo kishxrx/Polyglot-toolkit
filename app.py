@@ -1,24 +1,23 @@
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
-from googletrans import Translator
+from deep_translator import GoogleTranslator
 import os
 
 # ================= APP SETUP =================
-app = Flask(__name__, static_folder="dist")  
+app = Flask(__name__, static_folder="dist")
 CORS(app)
-translator = Translator()
 
 # ================= TRANSLATION API =================
 @app.route("/translate", methods=["POST"])
 def translate():
     data = request.get_json()
-    text = data.get("q")
+    text = data.get("q", "")
     src = data.get("source", "auto")
     tgt = data.get("target", "en")
-    
+
     try:
-        translated = translator.translate(text, src=src, dest=tgt)
-        return jsonify({"translatedText": translated.text})
+        translated = GoogleTranslator(source=src, target=tgt).translate(text)
+        return jsonify({"translatedText": translated})
     except Exception as e:
         return jsonify({"translatedText": f"⚠️ Error: {str(e)}"})
 
@@ -32,9 +31,6 @@ def serve(path):
         return send_from_directory(app.static_folder, "index.html")
 
 # ================= RUN SERVER =================
-import os
-
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
-
