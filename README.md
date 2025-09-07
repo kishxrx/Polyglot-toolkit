@@ -64,12 +64,12 @@ Your app will be available at: **http://127.0.0.1:5000**
 1. Push your code to GitHub.  
 2. Connect the repo to Render and create a **Web Service**.  
 3. Add the following:  
-   - **Start Command:**  
-     ```bash
+ - **Start Command:**  
+   ```bash
      python app.py
      ```  
-   - **Build Command:**  
-     ```bash
+ - **Build Command:**  
+   ```bash
      pip install -r requirements.txt && npm install && npm run build
      ```  
 
