@@ -1,7 +1,7 @@
 # 🌍 Polyglot Toolkit  
 *A lightweight web app for random text generation + instant translations*  
 
-🚀 **Live Demo:** [Deployed on Render](https://polyglot-app.onrender.com)  
+🚀 **Live Demo:** [Deployed on Render](https://polyglot-toolkit.onrender.com/)  
 
 ---
 
